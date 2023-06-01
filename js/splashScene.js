@@ -9,30 +9,30 @@
 // Splash Scene class.
 class SplashScene extends Phaser.Scene {
 
-  // This is the constructor for the splash scene
+  // Constructor for the splash scene.
   constructor() {
     super({ key: "splashScene"})
   }
 
-  // Initializing scene 
+  // Initialize scene. 
   init(data) {
     this.cameras.main.setBackgroundColor("#9dbebb")
   }
 
-  // Loads and logs splash scene image
+  // Load splash scene image.
   preload() {
     console.log("Splash Scene")
     this.load.image("splashSceneBackground", "images/immaculataLogo.png")
   }
 
-  // Creates and properly positions splash scene background
+  // Create and position splash scene background.
   create(data) {
     this.splashSceneBackgroundImage = this.add.sprite(0, 0, "splashSceneBackground")
     this.splashSceneBackgroundImage.x = 1920 / 2
     this.splashSceneBackgroundImage.y = 1080 / 2
   }
 
-  // If statement to switch to title scene after a certain amount of time has elapsed
+  // If statement to switch to title scene after a certain time.
   update(time, delta) {
     if (time > 3000) {
       this.scene.switch("titleScene")
@@ -40,5 +40,5 @@ class SplashScene extends Phaser.Scene {
   }
 }
 
-// Exports splash scene as default
+// Exporting splash scene for default.
 export default SplashScene

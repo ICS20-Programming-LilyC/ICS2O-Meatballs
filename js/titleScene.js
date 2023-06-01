@@ -7,32 +7,32 @@
 // This is the Title Scene file
 
 
-// Adding to Phaser.Scene
+// Adding a class to Title Scene.
 class TitleScene extends Phaser.Scene {
 
-  // This is the constructor for the title scene
+  // Constructor for the title scene.
   constructor() {
     super({ key: "titleScene"})
   }
 
-  // Initializing title scene
+  // Initializing title scene.
   init(data) {
     this.cameras.main.setBackgroundColor("ffffff")
   }
 
-  // Logs title scene during preload phase
+  // Log title scene during preload phase.
   preload() {
     console.log("Title Scene")
   }
 
-  // Creating data object
+  // Creating data object.
   create(data) {
   }
 
-  // Update using time and delta
+  // Update using time and delta.
   update(time, delta) {
   }
 }
 
-// Exports title scene as default
+// Exporting the title scene as default.
 export default TitleScene
