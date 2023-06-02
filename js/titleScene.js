@@ -17,7 +17,7 @@ class TitleScene extends Phaser.Scene {
 
   // Initializing title scene.
   init(data) {
-    this.cameras.main.setBackgroundColor("ffffff")
+    this.cameras.main.setBackgroundColor("669bbc")
   }
 
   // Log title scene during preload phase.
@@ -27,9 +27,17 @@ class TitleScene extends Phaser.Scene {
 
   // Creating data object.
   create(data) {
+    
+    // Display a welcome message.
+    this.add.text(960, 540, "Welcome to my game Cop vs. Meatballs!", {
+      fontSize: "48px",
+      fontFamily: "Arial",
+      color: "#ffffff",
+      align: "center"
+    }).setOrigin(0.5);
   }
 
-  // Update using time and delta.
+  // Update the Title Scene.
   update(time, delta) {
   }
 }
