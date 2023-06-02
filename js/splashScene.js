@@ -14,7 +14,7 @@ class SplashScene extends Phaser.Scene {
     super({ key: "splashScene"})
   }
 
-  // Initialize scene. 
+  // Initialize the scene. 
   init(data) {
     this.cameras.main.setBackgroundColor("#9dbebb")
   }
@@ -25,7 +25,7 @@ class SplashScene extends Phaser.Scene {
     this.load.image("splashSceneBackground", "images/immaculataLogo.png")
   }
 
-  // Create and position splash scene background.
+  // Create and position the splash scene background.
   create(data) {
     this.splashSceneBackgroundImage = this.add.sprite(0, 0, "splashSceneBackground")
     this.splashSceneBackgroundImage.x = 1920 / 2

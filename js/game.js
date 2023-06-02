@@ -35,7 +35,7 @@ const  config = {
   // Defualt background color.
   backgroundColor: 0x3f6e9a,
   
-  // Scale of background change to accomodate window size changing.
+  // Scale of background change to accommodate window size changing.
   scale: {
     mode: Phaser.Scale.FIT,
     

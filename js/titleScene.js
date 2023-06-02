@@ -25,10 +25,10 @@ class TitleScene extends Phaser.Scene {
     console.log("Title Scene")
   }
 
-  // Creating data object.
+  // Creating data objects.
   create(data) {
     
-    // Display a welcome message.
+    // Display a welcome message. Here is the source I used to creat the code below: https://rexrainbow.github.io/phaser3-rex-notes/docs/site/text/ .
     this.add.text(960, 540, "Welcome to my game Cop vs. Meatballs!", {
       fontSize: "48px",
       fontFamily: "Arial",
