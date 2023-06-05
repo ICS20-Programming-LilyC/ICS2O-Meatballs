@@ -9,10 +9,12 @@
 // Importing scene modules.
 import SplashScene from "./splashScene.js"
 import TitleScene from "./titleScene.js"
+import MenuScene from "./menuScene.js"
 
 // Creating constants of game scenes.
 const splashScene = new SplashScene()
 const titleScene = new TitleScene()
+const menuScene = new MenuScene()
 
 // Configuring constant for basic game settings.
 const  config = {
@@ -50,6 +52,7 @@ const game = new Phaser.Game(config)
 // Adding scenes to the game.
 game.scene.add("splashScene", splashScene)
 game.scene.add("titleScene", titleScene)
+game.scene.add("menuScene", menuScene)
 
 // Starting the splash scene.
 game.scene.start("splashScene")
