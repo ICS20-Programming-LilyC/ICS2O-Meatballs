@@ -65,7 +65,11 @@ class GameScene extends Phaser.Scene {
         const aNewMeatball = this.physics.add.sprite(this.cop.x, this.cop.y, "missile");
         this.meatballGroup.add(aNewMeatball); 
       }
-    } 
+    }
+
+    if (keySpaceObject.isUp === true) {
+      this.fireMeatball = false
+    }
   }
 
   clickButton() {
