@@ -40,8 +40,7 @@ class MenuScene extends Phaser.Scene {
   }
 
   clickButton() {
-    // Handle button click event
-    console.log("Button clicked!");
+    this.scene.start("gameScene");
   }
 }
 
