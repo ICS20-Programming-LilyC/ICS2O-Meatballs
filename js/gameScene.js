@@ -1,3 +1,11 @@
+/* global Phaser */
+
+// Copyright (c) 2020 Mr. Coxall All rights reserved
+//
+// Edited by: Lily
+// Edited on: 06/1/2023
+// This is the game Scene file
+
 // Adding a class to Game Scene.
 class GameScene extends Phaser.Scene {
   // Constructor for the game scene.
@@ -6,7 +14,7 @@ class GameScene extends Phaser.Scene {
 
     this.background = null;
     this.cop = null;
-    this.fireMeatball = false;
+    this.firebullet = false;
   }
 
   // Initializing game scene.
@@ -21,7 +29,7 @@ class GameScene extends Phaser.Scene {
     //Images
     this.load.image("cityBackground", "images/cityAndTornadeoBackground.png");
     this.load.image("cop", "images/cop.png");
-    this.load.image("missile", "images/meatball.png");
+    this.load.image("missile", "images/bullet.png");
   }
 
   // Creating data objects.
@@ -33,7 +41,7 @@ class GameScene extends Phaser.Scene {
     this.cop = this.physics.add.sprite(1920 / 2, 1000 - 100, "cop");
 
     //Creating a group for the missiles
-    this.meatballGroup = this.physics.add.group();
+    this.bulletGroup = this.physics.add.group();
   }
 
   // Update the Game Scene.
@@ -58,17 +66,18 @@ class GameScene extends Phaser.Scene {
     }
 
     if (keySpaceObject.isDown === true) {
-      if (this.fireMeatball === false) {
+      if (this.firebullet === false) {
 
-        //Fire meatballs
-        this.fireMeatball = true
-        const aNewMeatball = this.physics.add.sprite(this.cop.x, this.cop.y, "missile");
-        this.meatballGroup.add(aNewMeatball); 
+        //Fire bullets
+        this.firebullet = true
+        const aNewbullet = this.physics.add.sprite(this.cop.x - 15, this.cop.y - 235, "missile");
+        aNewbullet.setScale(0.1); 
+        this.bulletGroup.add(aNewbullet); 
       }
     }
 
     if (keySpaceObject.isUp === true) {
-      this.fireMeatball = false
+      this.firebullet = false
     }
   }
 
