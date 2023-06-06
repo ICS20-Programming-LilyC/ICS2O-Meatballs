@@ -7,25 +7,21 @@
 // This is the Phaser3 configuration file
 
 // Importing scene modules.
-import SplashScene from "./splashScene.js"
-import TitleScene from "./titleScene.js"
-import MenuScene from "./menuScene.js"
+import SplashScene from "./splashScene.js";
+import TitleScene from "./titleScene.js";
+import MenuScene from "./menuScene.js";
+import GameScene from "./gameScene.js";
 
-// Creating constants of game scenes.
-const splashScene = new SplashScene()
-const titleScene = new TitleScene()
-const menuScene = new MenuScene()
+// Creating instances of game scenes.
+const splashScene = new SplashScene();
+const titleScene = new TitleScene();
+const menuScene = new MenuScene();
+const gameScene = new GameScene();
 
 // Configuring constant for basic game settings.
-const  config = {
-  
-  // Game type
+const config = {
   type: Phaser.AUTO,
-  
-  // Screen height.
   width: 1920,
-  
-  // Screen width.
   height: 1080,
   physics: {
     default: 'arcade',
@@ -33,26 +29,21 @@ const  config = {
       debug: true
     }
   },
-  
-  // Defualt background color.
   backgroundColor: 0x3f6e9a,
-  
-  // Scale of background change to accommodate window size changing.
   scale: {
     mode: Phaser.Scale.FIT,
-    
-    // Centering the game on the page.
     autoCenter: Phaser.Scale.CENTER_BOTH,
   }
-}
+};
 
 // Creating a new Phaser game.
-const game = new Phaser.Game(config)
+const game = new Phaser.Game(config);
 
 // Adding scenes to the game.
-game.scene.add("splashScene", splashScene)
-game.scene.add("titleScene", titleScene)
-game.scene.add("menuScene", menuScene)
+game.scene.add("splashScene", splashScene);
+game.scene.add("titleScene", titleScene);
+game.scene.add("menuScene", menuScene);
+game.scene.add("gameScene", gameScene);
 
 // Starting the splash scene.
-game.scene.start("splashScene")
+game.scene.start("splashScene");
