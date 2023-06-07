@@ -30,6 +30,9 @@ class GameScene extends Phaser.Scene {
     this.load.image("cityBackground", "images/cityAndTornadeoBackground.png");
     this.load.image("cop", "images/cop.png");
     this.load.image("bullet", "images/bullet.png");
+
+    //Sounds
+    this.load.audio("gun shot", "sounds/gunshot.wav")
   }
 
   // Creating data objects.
@@ -88,13 +91,18 @@ class GameScene extends Phaser.Scene {
         aNewbullet.setScale(0.1); 
         
         // Add the bullet sprite to the bullet group for further processing.
-        this.bulletGroup.add(aNewbullet); 
+        this.bulletGroup.add(aNewbullet);
+        this.sound.play("gun shot");
       }
     }
 
     if (keySpaceObject.isUp === true) {
       this.firebullet = false
     }
+    //making missile upward
+    this.bulletGroup.children.each(function (item) {
+      item.y = item.y -15
+    })
   }
 
   clickButton() {
