@@ -6,7 +6,7 @@
 // Edited on: 06/1/2023
 // This is the menu scene file
 
-// Adding a class to Menu Scene.
+// Adding a class to the Menu Scene.
 class MenuScene extends Phaser.Scene {
   // Constructor for the menu scene.
   constructor() {

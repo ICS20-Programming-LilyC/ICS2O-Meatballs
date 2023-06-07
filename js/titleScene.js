@@ -36,9 +36,9 @@ create(data) {
   this.titleSceneBackgroundImage.y = 1080 / 2
 
   // Display a welcome message.
-  this.titleSceneText = this.add.text(1920 / 2, 100, "Cops VS meatballs", {
+  this.titleSceneText = this.add.text(1920 / 2, 100, "Cops VS Meatballs", {
     fontSize: "48px",
-    fontFamily: "Gerogia",
+    fontFamily: "Georgia",
     color: "#000000",
     align: "center"
   }).setOrigin(0.5);
