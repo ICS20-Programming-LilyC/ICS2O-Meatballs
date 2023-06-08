@@ -8,6 +8,7 @@
 
 // Adding a class to the Menu Scene.
 class MenuScene extends Phaser.Scene {
+  
   // Constructor for the menu scene.
   constructor() {
     super({ key: "menuScene" });
@@ -30,15 +31,22 @@ class MenuScene extends Phaser.Scene {
 
   // Creating data objects.
   create(data) {
-    this.menuSceneBackgroundImage = this.add.sprite(0, 0, "menuSceneBackground").setScale(2.75);
-    this.menuSceneBackgroundImage.x = 1920 / 2;
-    this.menuSceneBackgroundImage.y = 1080 / 2;
+    this.menuSceneBackgroundImage = this.add.sprite(0, 0, "menuSceneBackground").setScale(2.75)
+    this.menuSceneBackgroundImage.x = 1920 / 2
+    this.menuSceneBackgroundImage.y = 1080 / 2
 
-    this.startButton = this.add.sprite(1920 / 2, (1080 / 2) + 200, "startButton").setScale(2.4);
-    this.startButton.setInteractive({ useHandCursor: true });
-    this.startButton.on("pointerdown", this.clickButton, this);
+    //Creating Start Button.
+    this.startButton = this.add.sprite(1920 / 2, (1080 / 2) + 200, "startButton").setScale(2.4)
+    this.startButton.setInteractive({ useHandCursor: true })
+    this.startButton.on("pointerdown", () => this.clickButton())
   }
 
+  // Update using time and delta
+  update(time, delta) {
+    
+  }
+  
+  // Click button handler
   clickButton() {
     this.scene.start("gameScene");
   }

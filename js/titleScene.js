@@ -15,7 +15,7 @@ class TitleScene extends Phaser.Scene {
 
     this.titleSceneBackgroundImage = null
     this.titleSceneText = null
-    this.titleSceneTextStyle = { font: "200px Arial", fill: "#fde4b9", align: "center" }
+    this.titleSceneTextStyle = { font: "48px Georgia", fill: "#003049", align: "center" }
   }
 
   // Initializing title scene.
@@ -35,29 +35,16 @@ create(data) {
   this.titleSceneBackgroundImage.x = 1920 / 2
   this.titleSceneBackgroundImage.y = 1080 / 2
 
-  // Display a welcome message.
-  this.titleSceneText = this.add.text(1920 / 2, 100, "Cops VS Meatballs", {
-    fontSize: "48px",
-    fontFamily: "Georgia",
-    color: "#000000",
-    align: "center"
-  }).setOrigin(0.5);
-
-  // Slide in animation
-  this.tweens.add({
-    targets: this.titleSceneText,
-    x: 1920 / 2,
-    duration: 5000,
-    ease: 'Power1',
-    delay: 500
-  });
+  // Display a introduction message.
+  this.titleSceneText = this.add.text(1920 / 2, (1080 / 2) - 450, "Are you ready for...", this.titleSceneTextStyle).setOrigin(0.5)
 }
 
   // Update the Title Scene.
-  update(time, delta) {
+  update (time, delta) {
+  }
+  
     if (time > 9000) {
       this.scene.switch("menuScene")
-    }
   }
 }
 
