@@ -36,7 +36,9 @@ class GameScene extends Phaser.Scene {
     this.meatballGroup = null
     this.score = 0
     this.scoreText = null
-    this.scoreTextStyle = { font: "65px Georgia", fill: "#ffffff", align: "center"}
+    this.scoreTextStyle = { font: "65px Georgia", fill: "#ffffff", align: "center" }
+    this.gameOverText = null
+    this.gameOverTextStyle = {font: "65px Georgia", fill: "#ff000", align: "center" }
   }
 
   // Initializing game scene.
@@ -57,6 +59,7 @@ class GameScene extends Phaser.Scene {
     // Sounds
     this.load.audio("gunshot", "sounds/gunshot.wav");
     this.load.audio("explosion", "sounds/exploding.wav")
+    this.load.audio("gameOver", "sounds/gameOver.wav")
   }
 
   // Creating data objects.
@@ -90,6 +93,17 @@ class GameScene extends Phaser.Scene {
       this.scoreText.setText("Score:" + this.score.toString())
       this.createMeatball()
       this.createMeatball()
+    }.bind(this))
+
+    // Collisons between cop and meatballs.
+    this.physics.add.collider(this.cop, this.meatballGroup, function(copCollide, meatballCollide) {
+      this.sound.play("gameOver")
+      this.physics.pause()
+      meatballCollide.destroy()
+      copCollide.destroy()
+      this.gameOverText = this.add.text(1920 / 2, 1080 / 2, "You died. Game Over!\nClick here to play again!", this.gameOverTextStyle).setOrigin(0.5)
+      this.gameOverText.setInteractive({ useHandCursor: true })
+      this.gameOverText.on("pointerdown", () => this.scene.start("gameScene"))
     }.bind(this))
   }
 
