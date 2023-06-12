@@ -10,7 +10,7 @@
 class GameScene extends Phaser.Scene {
 
   //Create a meatball
-  createMeatball () {
+  createMeatball() {
     // This will allow for a number between 1 and 1920.
     const meatballXLocation = Math.floor(Math.random() * 1920) + 1
     
@@ -19,7 +19,7 @@ class GameScene extends Phaser.Scene {
 
     //This will add a minus sign in 50% of the outcomes. 
     meatballXVelocity *= Math.round(Math.random()) ? 1 : -1
-    const aMeatball = this.physics.add.sprite(meatballXLocation, -100,"meatball")
+    const aMeatball = this.physics.add.sprite(meatballXLocation, -100, "meatball")
     aMeatball.body.velocity.y = 200
     aMeatball.body.velocity.x = meatballXVelocity
     this.meatballGroup.add(aMeatball)
@@ -53,6 +53,7 @@ class GameScene extends Phaser.Scene {
 
     // Sounds
     this.load.audio("gunshot", "sounds/gunshot.wav");
+    this.load.audio("explosion", "sounds/exploding.wav")
   }
 
   // Creating data objects.
@@ -72,8 +73,17 @@ class GameScene extends Phaser.Scene {
     this.bulletGroup = this.physics.add.group();
 
     // Creating a group for the meatballs.
-    this.meatballGroup = this.physics.add.group();
-    this.createMeatball();
+    this.meatballGroup = this.add.group()
+    this.createMeatball()
+
+    // Collisons between bullets and meatballs.
+    this.physics.add.collider(this.bulletGroup, this.meatballGroup, function(bulletCollide, meatballCollide) {
+      meatballCollide.destroy()
+      bulletCollide.destroy()
+      this.sound.play("explosion")
+      this.createMeatball()
+      this.createMeatball()
+    }.bind(this))
   }
 
   // Update the Game Scene.
@@ -120,7 +130,6 @@ class GameScene extends Phaser.Scene {
         this.bulletGroup.add(aNewbullet);
         this.sound.play("gunshot");
       }
-
     }
 
     if (keySpaceObject.isUp === true) {
