@@ -29,11 +29,14 @@ class GameScene extends Phaser.Scene {
   constructor() {
     super({ key: "gameScene" });
 
-    this.background = null;
-    this.cop = null;
-    this.firebullet = false;
-    this.bulletGroup = null;
-    this.meatballGroup = null;
+    this.background = null
+    this.cop = null
+    this.firebullet = false
+    this.bulletGroup = null
+    this.meatballGroup = null
+    this.score = 0
+    this.scoreText = null
+    this.scoreTextStyle = { font: "65px Georgia", fill: "#ffffff", align: "center"}
   }
 
   // Initializing game scene.
@@ -61,6 +64,8 @@ class GameScene extends Phaser.Scene {
     this.background = this.add.sprite(0, 0, "cityBackground");
     this.background.setOrigin(0, 0);
 
+    this.scoreText = this.add.text(10, 10, "Score:" + this.score.toString(), this.scoreTextStyle)
+
     // Adjusting images to fit the user's screen.
     this.background.setScale(
       this.cameras.main.width / this.background.width,
@@ -81,6 +86,8 @@ class GameScene extends Phaser.Scene {
       meatballCollide.destroy()
       bulletCollide.destroy()
       this.sound.play("explosion")
+      this.score = this.score + 1
+      this.scoreText.setText("Score:" + this.score.toString())
       this.createMeatball()
       this.createMeatball()
     }.bind(this))
