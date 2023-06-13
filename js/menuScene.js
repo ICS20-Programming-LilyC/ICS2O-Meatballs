@@ -2,55 +2,59 @@
 
 // Copyright (c) 2020 Mr. Coxall All rights reserved
 //
-// Edited by: Lily Carroll
+// Edited by: Lily
 // Edited on: 06/1/2023
-// This is the menu scene file
+// This is the menu Scene file
 
-// Adding a class to the Menu Scene.
+// Adding to Phaser.Scene.
 class MenuScene extends Phaser.Scene {
-  
-  // Constructor for the menu scene.
   constructor() {
     super({ key: "menuScene" });
 
     this.menuSceneBackgroundImage = null;
     this.startButton = null;
+    this.instructionsButton = null;
   }
 
-  // Initializing menu scene.
   init(data) {
-    this.cameras.main.setBackgroundColor("5a189a");
+    this.cameras.main.setBackgroundColor("#ffffff");
   }
 
-  // Log menu scene during preload phase.
   preload() {
     console.log("Menu Scene");
     this.load.image("menuSceneBackground", "images/purpleStormStartingScreen.png");
     this.load.image("startButton", "images/startButton.png");
+    this.load.image("instructionsButton", "images/instructionsButton.png");
   }
 
-  // Creating data objects.
   create(data) {
-    this.menuSceneBackgroundImage = this.add.sprite(0, 0, "menuSceneBackground").setScale(2.75)
-    this.menuSceneBackgroundImage.x = 1920 / 2
-    this.menuSceneBackgroundImage.y = 1080 / 2
+    // Creating background image.
+    this.menuSceneBackgroundImage = this.add.sprite(0, 0, "menuSceneBackground").setScale(2.75);
+    this.menuSceneBackgroundImage.setPosition(1920 / 2, 1080 / 2);
 
-    //Creating Start Button.
-    this.startButton = this.add.sprite(1920 / 2, (1080 / 2) + 200, "startButton").setScale(2.4)
+    // Creating start button
+   this.startButton = this.add.sprite(1920 / 2, (1080 / 2) + 100, "startButton")
     this.startButton.setInteractive({ useHandCursor: true })
-    this.startButton.on("pointerdown", () => this.clickButton())
+    this.startButton.on("pointerdown", () => this.clickStart())
+    
+    // Creating instructions button.
+    this.instructionsButton = this.add.sprite(1920 / 2, (1080 / 2) + 300, "instructionsButton")
+    this.instructionsButton.setInteractive({ useHandCursor: true })
+    this.instructionsButton.on("pointerdown", () => this.clickInstructions())
   }
 
-  // Update using time and delta
-  update(time, delta) {
-    
+  update(time, delta) {}
+
+  // Function for clicking start button
+  clickStart() {
+    this.scene.start("gameScene")
   }
-  
-  // Click button handler
-  clickButton() {
-    this.scene.start("gameScene");
+
+  // Function for clicking instructions button
+  clickInstructions() {
+    this.scene.start("instructionsScene")
   }
 }
 
-// Exporting the menu scene as default.
-export default MenuScene;
+// Exports menu scene as default
+export default MenuScene
