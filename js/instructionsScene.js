@@ -44,7 +44,7 @@ class InstructionsScene extends Phaser.Scene {
     this.instructionsSceneBackgroundImage.y = 1080 / 2
 
     // Adding the instructions text for the user.
-    this.instructionsText = this.add.text(1920 / 2, (1080 / 2) + 430, "A clumsy scientist known as FLint LockWood has created a storm of raining meatballs on your home town Swallow Falls.\nYou play as Earl devereaux, a cop who is very dedicated and serious about the protection of this small town.\nIt is you job to help him ensure complete protection over the town and shoot down the falling meatballs with bullets to gain points.\nBut be careful if a meatball hits you, the game is over and Swallow Falls will be overpowered by the meatballs!\nTo move, use the arrow keys (left and right) and shoot the meatballs with the spacebar.\nGood luck!", this.instructionsTextStyle).setOrigin(0.5)
+    this.instructionsText = this.add.text(1920 / 2, (1080 / 2) + 430, "A clumsy scientist known as Flint Lockwood has created a storm of raining meatballs on your home town Swallow Falls.\nYou play as Earl Devereaux, a cop who is very dedicated and serious about the protection of this small town.\nIt is you job to help him ensure complete protection over the town and shoot down the falling meatballs with bullets to gain points.\nBut be careful if a meatball hits you, the game is over and Swallow Falls will be overpowered by the meatballs!\nTo move, use the arrow keys (left and right) and shoot the meatballs with the spacebar.\nGood luck!", this.instructionsTextStyle).setOrigin(0.5)
 
       // Creating back button.
     this.backButton = this.add.sprite(1920 / 2, (1080 / 2) - 480, "backButton")

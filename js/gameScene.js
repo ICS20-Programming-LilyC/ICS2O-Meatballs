@@ -54,10 +54,12 @@ class GameScene extends Phaser.Scene {
     this.score = 0
     this.scoreText = null
     this.scoreTextStyle = { font: "65px Georgia", fill: "#ffffff", align: "center" }
+    
 
     // Initializing the game over text and adding style.
     this.gameOverText = null
     this.gameOverTextStyle = {font: "65px Georgia", fill: "#ff000", align: "center" }
+
   }
 
   // Initializing game scene.
@@ -78,9 +80,10 @@ class GameScene extends Phaser.Scene {
     this.load.image("meatball", "images/meatball.png");
 
     // Loading sounds for the game.
-    this.load.audio("gunshot", "sounds/gunshot.wav");
+    this.load.audio("gunshot", "sounds/gunshot.wav")
     this.load.audio("explosion", "sounds/exploding.wav")
     this.load.audio("gameOver", "sounds/gameOver.wav")
+    this.load.audio("backgroundMusic", "sounds/sirenBeat.mp3")
   }
 
   // Creating data objects.
@@ -89,6 +92,10 @@ class GameScene extends Phaser.Scene {
     // Creating the background image and adding into the scene.
     this.background = this.add.sprite(0, 0, "cityBackground");
     this.background.setOrigin(0, 0);
+
+    // Allow background music to play.
+    this.backgroundMusic = this.sound.add('backgroundMusic', { loop: true, volume: 0.9 });
+    this.backgroundMusic.play();
 
     // Displaying styled score text.
     this.scoreText = this.add.text(10, 10, "Score: " + this.score.toString(), this.scoreTextStyle)
