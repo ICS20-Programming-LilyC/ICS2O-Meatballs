@@ -39,7 +39,7 @@ class InstructionsScene extends Phaser.Scene {
     this.load.image("backButton", "./images/backButton.png")
 
     // Loading audio for this page.
-    this.load.audio("instructionSceneMusic", "./sounds/mysteriousMusic")
+    this.load.audio("instructionSceneMusic", "./sounds/mysteriousMusic.mp3")
   }
 
   create(data) {
@@ -68,9 +68,9 @@ class InstructionsScene extends Phaser.Scene {
 
  // If the back button is clicked, return to the menu scene
   clickBack() {
-    this.scene.start("menuScene")
     this.instructionSceneMusic.pause()
     this.instructionSceneMusic.loop = false
+    this.scene.start("menuScene")
   }
 }
 
