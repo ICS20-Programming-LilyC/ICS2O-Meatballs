@@ -116,9 +116,9 @@ class GameScene extends Phaser.Scene {
     this.meatballGroup = this.add.group()
     this.createMeatball()
 
-    // Creating a timer to control the interval for creating meatballs (method learned from https://rexrainbow.github.io/phaser3-rex-notes/docs/site/timer/)
+    // Timer that controls the time for bombs and make it re-spawn even if user does nothing (method taken from: https://rexrainbow.github.io/phaser3-rex-notes/docs/site/timer/)
     this.meatballTimer = this.time.addEvent({
-      delay: 600,
+      delay: 4000,
       callback: this.createMeatball,
       callbackScope: this,
       loop: true
@@ -151,6 +151,10 @@ class GameScene extends Phaser.Scene {
 
       // Playing my gameOver sound.
       this.sound.play("gameOver")
+
+      // Disable space bar so that missiles cannot fire when game is over.
+      const keySpaceObj = this.input.keyboard.addKey("SPACE")
+      keySpaceObj.enabled = false;
 
       // Pausing physics.
       this.physics.pause()

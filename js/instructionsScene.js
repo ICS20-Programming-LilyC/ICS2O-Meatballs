@@ -15,10 +15,13 @@ class InstructionsScene extends Phaser.Scene {
     
     // Constructing back button
     this.backButton = null
+
+    // Constructing music for this scene.
+    this.instructionSceneMusic = null
     
     // Constructin text and style for this scene.
     this.instructionsText = null
-    this.instructionsTextStyle = {font: "26px Georgia", fill: "#001d3d", align: "center" }
+    this.instructionsTextStyle = {font: "26px Georgia", fill: "#fcf300", backgroundColor: "#14213d", align: "center" }
   }
 
   // Initializing scene with background color.
@@ -34,6 +37,9 @@ class InstructionsScene extends Phaser.Scene {
 
     //Loading image for back button.
     this.load.image("backButton", "./images/backButton.png")
+
+    // Loading audio for this page.
+    this.load.audio("instructionSceneMusic", "./sounds/mysteriousMusic")
   }
 
   create(data) {
@@ -43,8 +49,13 @@ class InstructionsScene extends Phaser.Scene {
     this.instructionsSceneBackgroundImage.x = 1920 / 2
     this.instructionsSceneBackgroundImage.y = 1080 / 2
 
+    // Creating the background music for this scene.
+    this.instructionSceneMusic = this.sound.add("instructionSceneMusic")
+    this.instructionSceneMusic.loop = true
+    this.instructionSceneMusic.play()
+
     // Adding the instructions text for the user.
-    this.instructionsText = this.add.text(1920 / 2, (1080 / 2) + 430, "A clumsy scientist known as Flint Lockwood has created a storm of raining meatballs on your home town Swallow Falls.\nYou play as Earl Devereaux, a cop who is very dedicated and serious about the protection of this small town.\nIt is you job to help him ensure complete protection over the town and shoot down the falling meatballs with bullets to gain points.\nBut be careful if a meatball hits you, the game is over and Swallow Falls will be overthrown.\nTo move, use the arrow keys (left and right) and shoot the meatballs with the spacebar.\nGood luck!", this.instructionsTextStyle).setOrigin(0.5)
+    this.instructionsText = this.add.text(1920 / 2, (1080 / 2) + 430, "A clumsy scientist known as Flint Lockwood has created a storm of raining meatballs on your hometown Swallow Falls.\nYou play as Earl Devereaux, a cop who is very dedicated and serious about the protection of this small town.\nIt is your job to help him ensure complete protection over the town and shoot down the falling meatballs with bullets to gain points.\nBut be careful if a meatball hits you, the game is over and Swallow Falls will be overthrown.\nTo move, use the arrow keys (left and right) and shoot the meatballs with the spacebar.\nGood luck!", this.instructionsTextStyle).setOrigin(0.5)
 
       // Creating back button.
     this.backButton = this.add.sprite(1920 / 2, (1080 / 2) - 480, "backButton")
@@ -58,6 +69,8 @@ class InstructionsScene extends Phaser.Scene {
  // If the back button is clicked, return to the menu scene
   clickBack() {
     this.scene.start("menuScene")
+    this.instructionSceneMusic.pause()
+    this.instructionSceneMusic.loop = false
   }
 }
 
