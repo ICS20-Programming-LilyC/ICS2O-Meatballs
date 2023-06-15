@@ -152,7 +152,7 @@ class GameScene extends Phaser.Scene {
       // Playing my gameOver sound.
       this.sound.play("gameOver")
 
-      // Disable the spacebar so that missiles cannot fire when the game is over.
+      // Disable the spacebar so that bullets cannot fire when the game is over.
       const keySpaceObj = this.input.keyboard.addKey("SPACE")
       keySpaceObj.enabled = false;
 

@@ -9,7 +9,7 @@
 // This class is the Instructions Scene
 class InstructionsScene extends Phaser.Scene {
 
-  // Constructor for the insturctions scene.
+  // Constructor for the instructions  scene.
   constructor() {
     super({ key: "instructionsScene" });
     this.instructionsSceneBackgroundImage = null
@@ -20,7 +20,7 @@ class InstructionsScene extends Phaser.Scene {
     // Constructing music for this scene.
     this.instructionSceneMusic = null
     
-    // Constructin text and style for this scene.
+    // Constructing text and style for this scene.
     this.instructionsText = null
     this.instructionsTextStyle = {font: "26px Georgia", fill: "#fcf300", backgroundColor: "#14213d", align: "center" }
   }
@@ -47,7 +47,7 @@ class InstructionsScene extends Phaser.Scene {
   // Creating data objects.
   create(data) {
     
-    // Creating background image.
+    // Creating  background image.
     this.instructionsSceneBackgroundImage = this.add.sprite(0, 0, "instructionsSceneBackgroundImage").setScale(3.79999)
     this.instructionsSceneBackgroundImage.x = 1920 / 2
     this.instructionsSceneBackgroundImage.y = 1080 / 2
@@ -60,7 +60,7 @@ class InstructionsScene extends Phaser.Scene {
     // Adding the instructions text for the user.
     this.instructionsText = this.add.text(1920 / 2, (1080 / 2) + 430, "A clumsy scientist known as Flint Lockwood has created a storm of raining meatballs on your hometown Swallow Falls.\nYou play as Earl Devereaux, a cop who is very dedicated and serious about the protection of this small town.\nIt is your job to help him ensure complete protection over the town and shoot down the falling meatballs with bullets to gain points.\nBut be careful if a meatball hits you, the game is over and Swallow Falls will be overthrown.\nTo move, use the arrow keys (left and right) and shoot the meatballs with the spacebar.\nGood luck!", this.instructionsTextStyle).setOrigin(0.5)
 
-      // Creating back button.
+      // Creating a back button.
     this.backButton = this.add.sprite(1920 / 2, (1080 / 2) - 480, "backButton")
     this.backButton.setInteractive({ useHandCursor: true })
     this.backButton.on("pointerdown", () => this.clickBack())
@@ -69,12 +69,23 @@ class InstructionsScene extends Phaser.Scene {
   // Update using time and delta.
   update(time, delta) {}
 
- // Function for clicking back button.
-  clickBack() {
-    this.instructionSceneMusic.pause()
-    this.instructionSceneMusic.loop = false
-    this.scene.start("menuScene")
+ clickBack() {
+   // Stop the instruction scene music
+  this.instructionSceneMusic.stop()
+   
+   // Stop the instructions scene
+  this.scene.stop("instructionsScene")
+   
+   // Start the menu scene
+  this.scene.start("menuScene")
+
+  // Ensure that the music from the gameScene is also stopped
+  const gameScene = this.scene.get("gameScene");
+  if (gameScene && gameScene.backgroundMusic) {
+    gameScene.backgroundMusic.stop();
   }
+}
+
 }
 
 // Export instructions scene as default.
