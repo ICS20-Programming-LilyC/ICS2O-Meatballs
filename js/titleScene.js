@@ -13,8 +13,13 @@ class TitleScene extends Phaser.Scene {
   constructor() {
     super({ key: "titleScene" });
 
+    // Constructing background image.
     this.titleSceneBackgroundImage = null;
+
+    // Constructing text.
     this.titleSceneText = null;
+
+    // Constructing text style.
     this.titleSceneTextStyle = { font: "48px Georgia", fill: "#003049", align: "center" };
   }
 
@@ -26,6 +31,8 @@ class TitleScene extends Phaser.Scene {
   // Log title scene during preload phase.
   preload() {
     console.log("Title Scene");
+
+    // Loading background image.
     this.load.image("titleSceneBackground", "images/copVsMeatballsTitleScreen.png");
   }
 

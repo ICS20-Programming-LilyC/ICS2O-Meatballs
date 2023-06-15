@@ -9,11 +9,12 @@
 // This class is the Instructions Scene
 class InstructionsScene extends Phaser.Scene {
 
+  // Constructor for the insturctions scene.
   constructor() {
     super({ key: "instructionsScene" });
     this.instructionsSceneBackgroundImage = null
     
-    // Constructing back button
+    // Constructing back button.
     this.backButton = null
 
     // Constructing music for this scene.
@@ -29,19 +30,21 @@ class InstructionsScene extends Phaser.Scene {
     this.cameras.main.setBackgroundColor("#ffffff")
   }
 
+  // Logs game scene during preload phase.
   preload() {
     console.log("Instructions Scene")
     
-    //Loading image for background.
+    // Loading image for background.
     this.load.image("instructionsSceneBackgroundImage","./images/flintLockwoodVictory.jpg")
 
-    //Loading image for back button.
+    // Loading image for back button.
     this.load.image("backButton", "./images/backButton.png")
 
     // Loading audio for this page.
     this.load.audio("instructionSceneMusic", "./sounds/mysteriousMusic.mp3")
   }
 
+  // Creating data objects.
   create(data) {
     
     // Creating background image.
@@ -63,10 +66,10 @@ class InstructionsScene extends Phaser.Scene {
     this.backButton.on("pointerdown", () => this.clickBack())
   }
 
-  // Update using time and delta
+  // Update using time and delta.
   update(time, delta) {}
 
- // If the back button is clicked, return to the menu scene
+ // Function for clicking back button.
   clickBack() {
     this.instructionSceneMusic.pause()
     this.instructionSceneMusic.loop = false
@@ -74,5 +77,5 @@ class InstructionsScene extends Phaser.Scene {
   }
 }
 
-// Export instructions scene as default
+// Export instructions scene as default.
 export default InstructionsScene

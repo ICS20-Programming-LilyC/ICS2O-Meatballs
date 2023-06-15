@@ -9,7 +9,7 @@
 // Adding a class to Game Scene.
 class GameScene extends Phaser.Scene {
 
-  //Create a meatball
+  //Create a meatball.
   createMeatball() {
     // This will allow for a meatball to spawn in a random x location, between numbers 1 and 1920.
     const meatballXLocation = Math.floor(Math.random() * 1920) + 1
@@ -116,7 +116,7 @@ class GameScene extends Phaser.Scene {
     this.meatballGroup = this.add.group()
     this.createMeatball()
 
-    // Timer that controls the time for bombs and make it re-spawn even if user does nothing (method taken from: https://rexrainbow.github.io/phaser3-rex-notes/docs/site/timer/)
+    // Timer that controls the time for bombs and make it re-spawn even if user does nothing. Link: https://rexrainbow.github.io/phaser3-rex-notes/docs/site/timer/
     this.meatballTimer = this.time.addEvent({
       delay: 4000,
       callback: this.createMeatball,
@@ -140,7 +140,7 @@ class GameScene extends Phaser.Scene {
       this.score = this.score + 2
       this.scoreText.setText("Score: " + this.score.toString())
 
-      //Recreating a new meatball for every one that is hit/destroyed.
+      // Recreating a new meatball for every one that is hit/destroyed.
       this.createMeatball()
       this.createMeatball()
     }.bind(this))

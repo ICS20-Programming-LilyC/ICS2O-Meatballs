@@ -22,6 +22,8 @@ class SplashScene extends Phaser.Scene {
   // Load splash scene image.
   preload() {
     console.log("Splash Scene")
+
+    // Loading background image.
     this.load.image("splashSceneBackground", "images/immaculataLogo.png")
   }
 
@@ -38,7 +40,7 @@ class SplashScene extends Phaser.Scene {
       // Using the alpha property since 0 = transparent, 1 = opaque.
       alpha: 0,
       
-      //Duration (in milliseconds).
+      // Duration (in milliseconds).
       duration: 4000,
       });
   }
