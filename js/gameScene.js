@@ -116,7 +116,7 @@ class GameScene extends Phaser.Scene {
     this.meatballGroup = this.add.group()
     this.createMeatball()
 
-    // Timer that controls the time for bombs and make it re-spawn even if user does nothing. Link: https://rexrainbow.github.io/phaser3-rex-notes/docs/site/timer/
+    // Timer that controls the time for bombs and makes it re-spawn even if the user does nothing. Link: https://rexrainbow.github.io/phaser3-rex-notes/docs/site/timer/
     this.meatballTimer = this.time.addEvent({
       delay: 4000,
       callback: this.createMeatball,
@@ -152,7 +152,7 @@ class GameScene extends Phaser.Scene {
       // Playing my gameOver sound.
       this.sound.play("gameOver")
 
-      // Disable space bar so that missiles cannot fire when game is over.
+      // Disable the spacebar so that missiles cannot fire when the game is over.
       const keySpaceObj = this.input.keyboard.addKey("SPACE")
       keySpaceObj.enabled = false;
 
@@ -207,7 +207,7 @@ class GameScene extends Phaser.Scene {
     if (keySpaceObject.isDown === true) {
       if (this.firebullet === false) {
         // Fire bullets
-        // Set fire bullet to true to prevent continuous firing.
+        // Set the fire bullet to true to prevent continuous firing.
         this.firebullet = true;
 
         // Create a new bullet sprite at a position slightly offset from the cop's position.

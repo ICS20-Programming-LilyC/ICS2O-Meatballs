@@ -59,7 +59,7 @@ class MenuScene extends Phaser.Scene {
     this.menuSceneMusic.loop = true
     this.menuSceneMusic.play()
 
-    // Creating start button.
+    // Creating a start button.
    this.startButton = this.add.sprite(1920 / 2, (1080 / 2) + 100, "startButton")
     this.startButton.setInteractive({ useHandCursor: true })
     this.startButton.on("pointerdown", () => this.clickStart())
@@ -73,7 +73,7 @@ class MenuScene extends Phaser.Scene {
   // Update the Game Scene.
   update(time, delta) {}
 
-  // Function for clicking start button.
+  // Function for clicking the start button.
   clickStart() {
     this.menuSceneMusic.pause()
     this.menuSceneMusic.loop = false
